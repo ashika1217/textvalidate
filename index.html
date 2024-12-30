@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TextArea Validation</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Type Your Message Here....</h1>
+
+        <textarea id="message" rows="9" cols="45" placeholder="Type Your Message Here..."></textarea>
+        <div class="counter">
+            <p>"Character typed:"
+                <span id="charCount">0</span>
+                "/"
+                <span id="maxCount">200</span>
+                
+            </p>
+            <p>"Remaining Characters:"
+                <span id="remainingCount">200</span>
+            </p>
+            <span id="error">You Reached Limit </span>
+        </div>
+    </div>
+    <style>
+     .container{
+        margin:40px;
+        padding:80px;
+        padding-right: 40px;
+        justify-items: center;
+        background-color: lightgreen;
+        border-width: 5px;
+        border-radius: 40px;
+        display:inline-block;
+        font-family: cursive;
+        font-weight: bold;
+     }
+
+     #message{
+        background-color:#080000;
+        color:white
+     }
+
+    #error{
+        color:red;
+        display: none;
+
+    }
+    </style>
+
+
+    <script>
+        // Set the maximum number of characters allowed
+        var maxChars = 200;
+
+        var messageInput = document.getElementById("message");
+        var charCountElement = document.getElementById("charCount");
+        var remainingCountElement = document.getElementById("remainingCount");
+
+        // Event listeneor 
+        messageInput.addEventListener("input", function () {
+
+            var typedChars = messageInput.value.length;
+            if (typedChars >= 200) {
+                alert(typedChars.textContent = "Character Limit Reached")
+            }
+
+            charCountElement.textContent = typedChars;
+            remainingCountElement.textContent = maxChars - typedChars;
+
+
+            if (typedChars >= maxChars) {
+                remainingCountElement.classList.add("error")
+
+            } else {
+                remainingCountElement.classList.remove("error");
+            }
+        });
+
+    </script>
+
+
+
+
+</body>
+
+
+</html>
